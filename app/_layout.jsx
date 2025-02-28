@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import TopNavBar from './components/TopNavBar';
+import TopNavBar from '../components/TopNavBar';
 
 export default function Layout() {
   return (

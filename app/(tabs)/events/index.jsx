@@ -64,7 +64,7 @@ export default function EventsList() {
           <View className="flex-row space-x-3 items-center">
             {/* 'All' Filter */}
             <TouchableOpacity
-              className={`h-10 px-5 rounded-full flex items-center justify-center ${selectedFilter === null ? "bg-purple-600" : "bg-gray-200"
+              className={`h-10 px-5 mr-1 rounded-full flex items-center justify-center ${selectedFilter === null ? "bg-purple-600" : "bg-gray-200"
                 }`}
               onPress={() => setSelectedFilter(null)}
             >
@@ -79,7 +79,7 @@ export default function EventsList() {
             {filters.map((filter) => (
               <TouchableOpacity
                 key={filter}
-                className={`h-10 px-5 rounded-full flex items-center justify-center ${selectedFilter === filter ? "bg-purple-600" : "bg-gray-200"
+                className={`h-10 px-5 mr-1 rounded-full flex items-center justify-center ${selectedFilter === filter ? "bg-purple-600" : "bg-gray-200"
                   }`}
                 onPress={() => setSelectedFilter(filter)}
               >
