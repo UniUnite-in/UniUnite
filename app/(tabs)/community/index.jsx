@@ -3,9 +3,7 @@ import { useState } from 'react';
 import Feed from '../../../components/community/Feed';
 import Group from '../../../components/community/Group';
 import Discover from '../../../components/community/Discover';
-console.log("Feed:", Feed);
-console.log("Group:", Group);
-console.log("Discover:", Discover);
+
 const CommunityScreen = () => {
   const [activeTab, setActiveTab] = useState('feed');
 
