@@ -11,7 +11,7 @@ import {
 import { useRouter } from "expo-router";
 import { useState, useMemo } from "react";
 import { eventData } from "../../../data/events";
-import { EventCard } from "../../../components/home/EventCard";
+import { EventCard } from "../../../components/event/EventCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function EventsList() {

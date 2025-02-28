@@ -5,70 +5,21 @@ export function EventCard({ event }) {
   const router = useRouter();
 
   return (
-    <View className="flex-row ml-2">
-    {/* Left Part: Image */}
-    <Image
-      source={event.image}
-      className="rounded-lg mr-10"
-      style={{
-        width: 250,
-        height: 200,
-        resizeMode: "contain",
-        alignSelf: "center",
-        alignevents: "center"
-      }}
-    />
-
-    {/* Right Part: Description */}
-    <View className="flex-1 p-2 self-center"> 
-      {/* Event Type */}
-      <View className="bg-gray-800 rounded-md px-2 py-1 self-start mb-1">
-        <Text className="text-white text-xs">{event.type}</Text>
-      </View>
-
-      {/* Title & Organizer */}
-      <Text className="font-bold text-base text-gray-800">
-        {event.title}
-      </Text>
-      <Text className="text-xs text-gray-500">{event.organizer}</Text>
-
-      {/* Date & Day (same row) */}
-      <View className="flex-row events-center mt-1">
-        <Text className="text-xs text-gray-600 mr-2">
-          {event.date}
-        </Text>
-        <Text className="text-xs text-gray-400">| {event.day}</Text>
-      </View>
-
-      {/* Price */}
-      <Text className="text-xs text-red-500 mt-1">
-        {event.price}
-      </Text>
-
-      {/* Next part: location + expiry (left), view button (right) */}
-      <View className="flex-row events-center justify-between mt-2">
-        <View>
-          <Text className="text-xs text-gray-600">
-            {event.location}
-          </Text>
-          <Text className="text-xs text-orange-500">
-            {event.expiry}
-          </Text>
+    <TouchableOpacity
+      className="bg-gray-50 p-3 rounded-lg mb-3 flex-row"
+      onPress={() => router.push(`/events/${event.id}`)}
+    >
+      <Image source={event.image} className="rounded-lg mr-3"
+        style={{ width: 64, height: 64}}
+        resizeMode="cover"
+      />
+      <View className="flex-1">
+        <Text className="font-bold text-gray-800">{event.title}</Text>
+        <Text className="text-gray-500 text-xs">{event.date} • {event.time}</Text>
+        <View className="bg-purple-100 rounded-full px-2 py-1 self-start mt-1">
+          <Text className="text-purple-800 text-xs">{event.type}</Text>
         </View>
-
-        <TouchableOpacity
-          onPress={() => {
-            // Navigate to details
-            router.push(`events/${String(event.id)}`);
-          }}
-          className="bg-orange-500 px-3 py-1 rounded-lg"
-        >
-          <Text className="text-white font-semibold text-s">
-            View
-          </Text>
-        </TouchableOpacity>
       </View>
-    </View>
-  </View>
+    </TouchableOpacity>
   );
 }
