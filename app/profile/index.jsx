@@ -43,24 +43,25 @@ const ProfileScreen = () => {
             {/* Avatar */}
             <Image 
               source={profile.avatar} 
-              className="w-20 h-20 rounded-full border-4 border-white -mt-10"
+              className="border-4 rounded-full border-white -mt-10"
+              style={{ width: 80, height: 80}}
             />
             
             {/* Stats */}
             <View className="flex-1 flex-row justify-evenly ml-2">
               <View className="items-center">
                 <Text className="font-bold text-gray-800">{profile.connections}</Text>
-                <Text className="text-gray-500 text-xs">Connections</Text>
+                <Text className="text-gray-500 text-s">Connections</Text>
               </View>
               
               <View className="items-center">
                 <Text className="font-bold text-gray-800">{profile.events}</Text>
-                <Text className="text-gray-500 text-xs">Events</Text>
+                <Text className="text-gray-500 text-s">Events</Text>
               </View>
               
               <View className="items-center">
                 <Text className="font-bold text-gray-800">{profile.posts}</Text>
-                <Text className="text-gray-500 text-xs">Posts</Text>
+                <Text className="text-gray-500 text-s">Posts</Text>
               </View>
             </View>
           </View>

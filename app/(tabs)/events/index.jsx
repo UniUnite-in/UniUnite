@@ -11,6 +11,7 @@ import {
 import { useRouter } from "expo-router";
 import { useState, useMemo } from "react";
 import { eventData } from "../../../data/events";
+import { EventCard } from "../../../components/home/EventCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function EventsList() {
@@ -101,6 +102,7 @@ export default function EventsList() {
         data={filteredEvents}
         keyExtractor={(item) => item.id}
         numColumns={numColumns}
+        showsVerticalScrollIndicator={false}
         columnWrapperStyle={
           numColumns > 1
             ? {
@@ -116,71 +118,7 @@ export default function EventsList() {
               style={{ width: (numColumns >= 2) ? ((numColumns == 3) ? "33%" : "48%") : "100%" }}
             >
               {/* Row Container: Image on Left, Info on Right */}
-              <View className="flex-row ml-2">
-                {/* Left Part: Image */}
-                <Image
-                  source={item.image}
-                  className="rounded-lg"
-                  style={{
-                    width: 200,
-                    height: 200,
-                    resizeMode: "contain",
-                    alignSelf: "center",
-                    alignItems: "center"
-                  }}
-                />
-
-                {/* Right Part: Description */}
-                <View className="flex-1 p-2">
-                  {/* Event Type */}
-                  <View className="bg-gray-800 rounded-md px-2 py-1 self-start mb-1">
-                    <Text className="text-white text-xs">{item.type}</Text>
-                  </View>
-
-                  {/* Title & Organizer */}
-                  <Text className="font-bold text-base text-gray-800">
-                    {item.title}
-                  </Text>
-                  <Text className="text-xs text-gray-500">{item.organizer}</Text>
-
-                  {/* Date & Day (same row) */}
-                  <View className="flex-row items-center mt-1">
-                    <Text className="text-xs text-gray-600 mr-2">
-                      {item.date}
-                    </Text>
-                    <Text className="text-xs text-gray-400">| {item.day}</Text>
-                  </View>
-
-                  {/* Price */}
-                  <Text className="text-xs text-red-500 mt-1">
-                    {item.price}
-                  </Text>
-
-                  {/* Next part: location + expiry (left), view button (right) */}
-                  <View className="flex-row items-center justify-between mt-2">
-                    <View>
-                      <Text className="text-xs text-gray-600">
-                        {item.location}
-                      </Text>
-                      <Text className="text-xs text-orange-500">
-                        {item.expiry}
-                      </Text>
-                    </View>
-
-                    <TouchableOpacity
-                      onPress={() => {
-                        // Navigate to details
-                        router.push(`events/${String(item.id)}`);
-                      }}
-                      className="bg-orange-500 px-3 py-1 rounded-lg"
-                    >
-                      <Text className="text-white font-semibold text-s">
-                        View
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
+              <EventCard key={item.id} event={item} />
             </View>
           );
         }}
