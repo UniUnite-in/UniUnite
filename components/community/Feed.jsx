@@ -1,4 +1,3 @@
-// components/community/Feed.jsx
 import React, { useState } from 'react';
 import {
   View,
@@ -7,7 +6,6 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
-  ScrollView,
 } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { posts } from '../../data/communityData';
@@ -39,11 +37,10 @@ const Feed = () => {
           </Text>
         </View>
       </View>
-      
+
       {/* Post Content */}
       <Text className="text-gray-700 mb-3">{item.content}</Text>
-      
-      {/* Post Image (if available) */}
+
       {item.image && (
         <Image
           source={item.image}
@@ -51,17 +48,19 @@ const Feed = () => {
           resizeMode="cover"
         />
       )}
-      
-      {/* Post Stats */}
-      <View className="flex-row justify-between items-center mb-3">
+
+      {/* Post Actions */}
+      <View className="flex-row justify-between items-center mb-3" 
+    style={{ justifyContent: 'space-between' }}>
         <Text className="text-gray-600 text-xs">{item.likes} likes</Text>
         <Text className="text-gray-600 text-xs">
           {item.comments?.length || 0} comments
         </Text>
       </View>
+
+      <View className="flex-row justify-around border-t border-b border-gray-200 py-2"
       
-      {/* Post Actions */}
-      <View className="flex-row justify-around border-t border-b border-gray-200 py-2">
+    style={{ justifyContent: 'space-around' }}>
         <TouchableOpacity className="flex-row items-center">
           <FontAwesome5 name="heart" size={16} color="#6B7280" />
           <Text className="ml-2 text-gray-600">Like</Text>
@@ -75,8 +74,8 @@ const Feed = () => {
           <Text className="ml-2 text-gray-600">Share</Text>
         </TouchableOpacity>
       </View>
-      
-      {/* Comments Section */}
+
+      {/* Comments Preview */}
       {item.comments && item.comments.length > 0 && (
         <View className="mt-3">
           {item.comments.slice(0, 2).map((comment, index) => (
@@ -86,7 +85,7 @@ const Feed = () => {
             </View>
           ))}
           {item.comments.length > 2 && (
-            <TouchableOpacity className="mt-2">
+            <TouchableOpacity>
               <Text className="text-gray-500">
                 View all {item.comments.length} comments
               </Text>
@@ -97,49 +96,53 @@ const Feed = () => {
     </View>
   );
 
-  return (
-    <ScrollView className="flex-1 px-4 pt-4" showsVerticalScrollIndicator={false}>
-      {/* Create Post Section */}
-      <View className="bg-white p-4 rounded-lg shadow-sm mb-4">
-        <View className="flex-row items-center mb-3">
-          <Image
-            source={require("../../assets/profile-avatar.png")}
-            style={{ width: 40, height: 40, borderRadius: 20 }}
-            className="mr-2"
-          />
-          <TextInput
-            className="flex-1 bg-gray-100 rounded-full px-4 py-2"
-            placeholder="What's on your mind?"
-            value={postText}
-            onChangeText={setPostText}
-          />
-        </View>
-        <View className="flex-row justify-between">
-          <TouchableOpacity className="flex-row items-center">
-            <FontAwesome5 name="image" size={16} color="#6B7280" />
-            <Text className="ml-2 text-gray-600">Photo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="flex-row items-center">
-            <FontAwesome5 name="video" size={16} color="#6B7280" />
-            <Text className="ml-2 text-gray-600">Video</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="bg-purple-600 px-4 py-2 rounded-lg"
-            onPress={handlePost}
-            disabled={!postText.trim()}
-          >
-            <Text className="text-white">Post</Text>
-          </TouchableOpacity>
-        </View>
+  const renderHeader = () => (
+    <View className="bg-white p-4 rounded-lg shadow-sm mb-4">
+      <View className="flex-row items-center mb-3">
+        <Image
+          source={require("../../assets/profile-avatar.png")}
+          style={{ width: 40, height: 40, borderRadius: 20 }}
+          className="mr-2"
+        />
+        <TextInput
+          className="flex-1 bg-gray-100 rounded-full px-4 py-2"
+          placeholder="What's on your mind?"
+          value={postText}
+          onChangeText={setPostText}
+        />
       </View>
-      
-      {/* Posts List */}
-      <FlatList
-        data={posts}
-        renderItem={renderPost}
-        keyExtractor={(item) => item.id.toString()}
-      />
-    </ScrollView>
+      <View className="flex-row justify-between" 
+    style={{ justifyContent: 'space-between' }}>
+        <TouchableOpacity className="flex-row items-center">
+          <FontAwesome5 name="image" size={16} color="#6B7280" />
+          <Text className="ml-2 text-gray-600">Photo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="flex-row items-center">
+          <FontAwesome5 name="video" size={16} color="#6B7280" />
+          <Text className="ml-2 text-gray-600">Video</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          className={`bg-purple-600 px-4 py-2 rounded-lg ${
+            !postText.trim() ? 'opacity-50' : ''
+          }`}
+          onPress={handlePost}
+          disabled={!postText.trim()}
+        >
+          <Text className="text-white">Post</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  return (
+    <FlatList
+      data={posts}
+      renderItem={renderPost}
+      keyExtractor={(item) => item.id.toString()}
+      ListHeaderComponent={renderHeader}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16 }}
+    />
   );
 };
 

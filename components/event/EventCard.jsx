@@ -46,7 +46,8 @@ export function EventCard({ event }) {
         </Text>
 
         {/* Next part: location + expiry (left), view button (right) */}
-        <View className="flex-row events-center justify-between mt-2">
+        <View className="flex-row events-center justify-between mt-2" 
+    style={{ justifyContent: 'space-between' }}>
           <View>
             <Text className="text-xs text-gray-600">
               {event.location}

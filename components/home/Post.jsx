@@ -14,7 +14,8 @@ export function Post({ post }) {
                 </View>
             </View>
             <Text className="text-gray-700 mb-3">{post.content}</Text>
-            <View className="flex-row justify-between">
+            <View className="flex-row justify-between"
+                style={{ justifyContent: 'space-between' }}>
                 <TouchableOpacity className="flex-row items-center">
                     <FontAwesome5 name="heart" size={16} color="#6B7280" solid />
                     <Text className="ml-1 text-gray-600">{post.likes}</Text>
