@@ -9,7 +9,7 @@ const TopNavBar = () => {
   const isProfilePage = pathname === '/profile';
 
   return (
-    <View className="bg-blue-600 p-4 flex-row items-center justify-between relative" 
+    <View className="bg-purple-600 p-4 flex-row items-center justify-between relative" 
     style={{ justifyContent: 'space-between' }}>
       {isProfilePage ? (
         <TouchableOpacity onPress={() => router.back()} className="z-10">

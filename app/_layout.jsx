@@ -1,11 +1,16 @@
-import { Stack } from 'expo-router';
+import React from 'react';
+
+import { Slot } from 'expo-router';
+import { AuthProvider } from './(auth)/authContext';
 import TopNavBar from '../components/TopNavBar';
 
-export default function Layout() {
+const Layout = () => {
   return (
-    <>
+    <AuthProvider>
       <TopNavBar />
-      <Stack screenOptions={{ headerShown: false }} />
-    </>
+      <Slot />
+    </AuthProvider>
   );
-}
+};
+
+export default Layout;
