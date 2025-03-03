@@ -35,7 +35,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="notes/index"
+        name="notes"
         options={{
           title: "",
           headerShown: false,
@@ -45,7 +45,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="chats/index"
+        name="chats"
         options={{
           title: "",
           headerShown: false,
