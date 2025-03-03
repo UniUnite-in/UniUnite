@@ -62,7 +62,7 @@ export function EventCard({ event }) {
               // Navigate to details
               router.push(`events/${String(event.id)}`);
             }}
-            className="bg-orange-500 px-3 py-1 rounded-lg"
+            className="bg-red-500 px-3 py-1 rounded-lg"
           >
             <Text className="text-white font-semibold text-s">
               View
