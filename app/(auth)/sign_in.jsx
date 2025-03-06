@@ -9,7 +9,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (user) {
-      router.push('/tabs/home');
+      router.push('/(tabs)/home');
     }
   }, [user]);
 
