@@ -20,7 +20,8 @@ const TopNavBar = () => {
       )}
 
       {/* Title Centered */}
-      <Text className="text-white text-lg font-bold absolute left-1/2 -translate-x-1/2">
+      <Text className="text-white text-lg font-bold"
+      style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
         UniUnite
       </Text>
 
