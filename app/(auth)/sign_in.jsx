@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity,SafeAreaView } from 'react-native';
 import { useAuth } from '../(auth)/authContext';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
+import { Link } from 'expo-router';
 
 const SignIn = () => {
   const { user, signIn } = useAuth();
-  const router = useRouter();
 
   useEffect(() => {
     if (user) {
@@ -24,7 +24,7 @@ const SignIn = () => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-purple-100 p-6">
+    <SafeAreaView className="flex-1 justify-center items-center bg-purple-100 p-6">
       <Text className="text-4xl font-bold text-purple-700 mb-6">Welcome Back!</Text>
       <Text className="text-lg text-gray-600 mb-8">Sign in to continue</Text>
       <TextInput
@@ -44,10 +44,10 @@ const SignIn = () => {
         <Text className="text-white text-center text-lg">Sign In</Text>
       </TouchableOpacity>
       <Text className="text-gray-600">Don't have an account?</Text>
-      <TouchableOpacity onPress={() => router.push('/sign_up')}>
+      <Link href = "/(auth)/sign_up">
         <Text className="text-purple-700 font-bold">Sign Up</Text>
-      </TouchableOpacity>
-    </View>
+      </Link>
+    </SafeAreaView>
   );
 };
 

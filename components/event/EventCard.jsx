@@ -1,8 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
+import { router } from "expo-router";
 
 export function EventCard({ event }) {
-  const router = useRouter();
 
   return (
     <View className="flex-row ml-2">
@@ -60,7 +59,7 @@ export function EventCard({ event }) {
           <TouchableOpacity
             onPress={() => {
               // Navigate to details
-              router.push(`events/${String(event.id)}`);
+              router.push(`/events/${String(event.id)}`);
             }}
             className="bg-red-500 px-3 py-1 rounded-lg"
           >

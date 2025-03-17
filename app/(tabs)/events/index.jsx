@@ -8,14 +8,13 @@ import {
   ScrollView,
   useWindowDimensions,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { router } from "expo-router";
 import { useState, useMemo } from "react";
 import { eventData } from "../../../data/events";
 import { EventCard } from "../../../components/event/EventCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function EventsList() {
-  const router = useRouter();
   const { width } = useWindowDimensions();
 
   // Dynamically set columns:
@@ -46,7 +45,7 @@ export default function EventsList() {
   );
 
   return (
-    <View className="flex-1 bg-white p-2">
+    <SafeAreaView className="flex-1 bg-white p-2">
       {/* Search Bar */}
       <TextInput
         className="border border-gray-300 p-3 rounded-lg mb-2 shadow-sm"
@@ -123,6 +122,6 @@ export default function EventsList() {
           );
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 }

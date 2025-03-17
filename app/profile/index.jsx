@@ -1,10 +1,9 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
 
 const ProfileScreen = () => {
-  const router = useRouter();
   
   // Mock profile data
   const profile = {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useAuth } from './authContext';
 import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SignUp = () => {
   const { signUp } = useAuth();
@@ -15,7 +16,7 @@ const SignUp = () => {
   };
 
   return (
-    <View className=" flex-1 justify-center items-center px-4">
+    <SafeAreaView className=" flex-1 justify-center items-center px-4">
       <Text className="text-3xl font-bold mb-6">Sign Up</Text>
       <TextInput
         className="w-1/2 p-3 mb-3 bg-gray-100 rounded"
@@ -36,7 +37,7 @@ const SignUp = () => {
       >
         <Text className="text-white text-center">Sign Up</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
