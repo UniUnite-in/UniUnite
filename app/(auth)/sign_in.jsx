@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity,SafeAreaView } from 'react-native';
-import { useAuth } from '../(auth)/authContext';
+import { useAuth } from '../../components/authContext';
 import { router } from 'expo-router';
 import { Link } from 'expo-router';
 
