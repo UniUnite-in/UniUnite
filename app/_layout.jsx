@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Slot } from 'expo-router';
-import { AuthProvider } from './(auth)/authContext';
+import { AuthProvider } from '../components/authContext';
 import TopNavBar from '../components/TopNavBar';
 
 const Layout = () => {
